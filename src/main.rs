@@ -267,23 +267,69 @@
 
 
 // Example of HashMap in Rust
-use std::collections::HashMap; // Import the HashMap collection from the standard library
+// use std::collections::HashMap; // Import the HashMap collection from the standard library
+
+// fn main() {
+//     let mut ages: HashMap<String, i32> = HashMap::new();
+    
+//     // Insert ages into the HashMap
+//     ages.insert(String::from("Alice"), 10);
+//     ages.insert(String::from("Bob"), 20);
+//     ages.insert(String::from("Charlie"), 30);
+
+//     // Check if Alice's age exists in the HashMap 
+//     if let Some(age) = ages.get("Alice") {
+//         println!("Alice's age: {}", age);
+//     }
+
+//     // Iterate over all entries in the HashMap and print them
+//     for (name, age) in &ages {
+//         println!("{}: {}", name, age);
+//     }
+// }
+
+// Example of Trait in Rust
+// Trait defines shared behavior that types can implement
+// Any type that implements the Summary trait must provide an implementation for the summarize method
+// This allows different types to be used interchangeably when calling summarize()
+trait Summary {
+    fn summarize(&self) -> String;
+}
+
+struct Article {
+    headline: String,
+}
+
+struct Tweet {
+    text: String
+}
+
+// Implement the Summary trait for the Tweet struct
+// This allows us to call summarize() on instances of Tweet
+impl Summary for Tweet {
+    fn summarize(&self) -> String {
+        format!("Tweet: {}", self.text)
+    }
+}
+
+// Implement the Summary trait for the Article struct
+// This allows us to call summarize() on instances of Article
+impl Summary for Article {
+    fn summarize(&self) -> String {
+        format!("Article: {}", self.headline)
+    }
+}
 
 fn main() {
-    let mut ages: HashMap<String, i32> = HashMap::new();
-    
-    // Insert ages into the HashMap
-    ages.insert(String::from("Alice"), 10);
-    ages.insert(String::from("Bob"), 20);
-    ages.insert(String::from("Charlie"), 30);
+    let tweet = Tweet {
+        text: String::from("Hello, world!"),
+    };
 
-    // Check if Alice's age exists in the HashMap 
-    if let Some(age) = ages.get("Alice") {
-        println!("Alice's age: {}", age);
-    }
+    let article = Article {
+        headline: String::from("Breaking News"),
+    };
 
-    // Iterate over all entries in the HashMap and print them
-    for (name, age) in &ages {
-        println!("{}: {}", name, age);
-    }
+    // Call the summarize method on both the tweet and article instances
+    println!("{}", tweet.summarize());
+    println!("{}", article.summarize());
 }
