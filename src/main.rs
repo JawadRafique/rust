@@ -87,12 +87,48 @@
 // }
 
 // Ownership
-fn main () {
-    let s1 = String::from("hello"); // s1 comes into scope
-    let s2 = s1 + " world"; // s1 is moved to s2, s1 is no longer valid
-    println!("s2: {}", s2); 
+// fn main () {
+//     let s1 = String::from("hello"); // s1 comes into scope
+//     let s2 = s1 + " world"; // s1 is moved to s2, s1 is no longer valid
+//     println!("s2: {}", s2); 
 
-    // cloning s2 to create a new String s3
-    let s3 = s2.clone() + "!";
-    println!("s3: {}", s3);
+//     // cloning s2 to create a new String s3
+//     let s3 = s2.clone() + "!";
+//     println!("s3: {}", s3);
+// }
+
+// References and Borrowing
+// fn main () {
+//     let s1 = String::from("hello"); // s1 comes into scope
+//     let s2 = &s1; // s1 is borrowed by s2, s1 is still valid
+//     println!("s1: {}, s2: {}", s1, s2); 
+
+//     let len = calculate_length(&s1);
+//     println!("The length of s1 is: {}", len);
+// }
+
+// fn calculate_length(s: &String) -> usize {
+//     s.len()
+// }
+
+// Example of mutable references and borrowing rules in Rust
+// This will cause a compile-time error because Rust only allows one mutable reference to a particular piece of data in a particular scope at a time.
+// fn main () {
+//     let mut s1 = String::from("hello"); // s1 comes into scope
+
+//     let r1: &mut String = &mut s1;
+//     let r2: &mut String = &mut s1;
+
+//     print!("r1: {}, r2: {}", r1, r2);
+// }
+
+fn main () {
+    let mut s1 = String::from("hello"); // s1 comes into scope
+
+    add_exclamation(&mut s1);
+    println!("s1 after adding exclamation: {}", s1);
+}
+
+fn add_exclamation(s: &mut String) {
+    s.push('!')
 }
