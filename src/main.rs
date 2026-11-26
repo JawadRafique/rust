@@ -122,13 +122,39 @@
 //     print!("r1: {}, r2: {}", r1, r2);
 // }
 
-fn main () {
-    let mut s1 = String::from("hello"); // s1 comes into scope
+// fn main () {
+//     let mut s1 = String::from("hello"); // s1 comes into scope
 
-    add_exclamation(&mut s1);
-    println!("s1 after adding exclamation: {}", s1);
+//     add_exclamation(&mut s1);
+//     println!("s1 after adding exclamation: {}", s1);
+// }
+
+// fn add_exclamation(s: &mut String) {
+//     s.push('!')
+// }
+
+// Structs in Rust
+struct User {
+    username: String,
+    age: u32,
+    active: bool,
+}
+// Main function demonstrating the usage of the User struct and its methods
+fn main () {
+    let user1 = User {
+        username: String::from("john_doe"),
+        age: 30,
+        active: true,
+    };
+    // println!("Username: {}, Age: {}, Active: {}", user1.username, user1.age, user1.active); 
+    println!("{}", user1.describe());
 }
 
-fn add_exclamation(s: &mut String) {
-    s.push('!')
+// Implementation of the User struct methods
+impl User{
+    // Method to describe the user as a string
+    fn describe(&self) -> String {
+        // Using the format! macro to create a descriptive string for the user
+        format!("Username: {}, Age: {}, Active: {}", self.username, self.age, self.active)
+    }
 }
