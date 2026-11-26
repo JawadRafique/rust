@@ -44,16 +44,44 @@
 // }
 
 // Multi Function example
+// fn main() {
+//     greeting("Alice");
+//     println!("The result of addition is: {}", add(32, 10));
+// }
 
-fn main() {
-    greeting("Alice");
-    println!("The result of addition is: {}", add(32, 10));
-}
+// fn greeting(name: &str) {
+//     println!("Hello and welcome to the community, {}!", name);
+// }
 
-fn greeting(name: &str) {
-    println!("Hello and welcome to the community, {}!", name);
-}
+// fn add (a: i32, b: i32) -> i32 {
+//     a + b // any line without a semicolon is treated as the return value of the function
+// }
 
-fn add (a: i32, b: i32) -> i32 {
-    a + b // any line without a semicolon is treated as the return value of the function
+// if else statement
+// fn main () {
+//     let number: i32 = -10;
+
+//     if number > 0 {
+//         println!("The number is positive");
+//     } else if number < 0 {
+//         println!("The number is negative");
+//     } else {
+//         println!("The number is zero");
+//     }
+
+//     let label: &str = if number > 0 {"positive"} else if number < 0 {"negative"} else {"zero"};
+//     println!("The label is: {}", label);
+// }
+
+// Loop
+fn main () {
+    for i in 1..4 {
+        println!("i: {}", i);
+    }
+
+    let scores = [90, 85, 78, 92, 88]; // array of scores
+
+    for score in scores {
+        println!("Score: {}", score);
+    }
 }
