@@ -220,22 +220,48 @@
 
 // Result type in Rust represents either success (Ok) or failure (Err).
 // Example usage of Result type
-fn divide(a: f64, b: f64) -> Result<f64, String> { // Returns Ok(result) if division is successful, Err(message) if division by zero 
-    if b == 0.0 {
-        Err(String::from("Cannot divide by zero"))
-    } else {
-        Ok(a / b)
-    }
-}
+// fn divide(a: f64, b: f64) -> Result<f64, String> { // Returns Ok(result) if division is successful, Err(message) if division by zero 
+//     if b == 0.0 {
+//         Err(String::from("Cannot divide by zero"))
+//     } else {
+//         Ok(a / b)
+//     }
+// }
+
+// fn main() {
+//     match divide(10.0, 2.0) {
+//         Ok(result) => println!("Result: {}", result),
+//         Err(e) => println!("Error: {}", e),
+//     } 
+
+//     match divide(10.0, 0.0) {
+//         Ok(result) => println!("Result: {}", result),
+//         Err(e) => println!("Error: {}", e),
+//     }
+// }
+
+use core::borrow;
 
 fn main() {
-    match divide(10.0, 2.0) {
-        Ok(result) => println!("Result: {}", result),
-        Err(e) => println!("Error: {}", e),
-    } 
+    let mut scores: Vec<i32> = Vec::new();
 
-    match divide(10.0, 0.0) {
-        Ok(result) => println!("Result: {}", result),
-        Err(e) => println!("Error: {}", e),
+    scores.push(10);
+    scores.push(20);
+    scores.push(30);
+    
+    for score in &scores {
+        println!("Score: {}", score);
     }
+
+    println!("First score count: {}", scores[0]);
+    
+    // Demonstrates ownership and borrowing in Rust
+    // `owned` is a String that owns its data
+    // `borrowed` is a string slice that borrows data from a string literal
+    let owned: String = String::from("Hello, Rust!");
+    // &str for read-only access to string data
+    let borrowed: &str = "world";
+
+    println!("Owned: {}", owned);
+    println!("Borrowed: {}", borrowed);
 }
