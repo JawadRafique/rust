@@ -74,14 +74,25 @@
 // }
 
 // Loop
+// fn main () {
+//     for i in 1..4 {
+//         println!("i: {}", i);
+//     }
+
+//     let scores = [90, 85, 78, 92, 88]; // array of scores
+
+//     for score in scores {
+//         println!("Score: {}", score);
+//     }
+// }
+
+// Ownership
 fn main () {
-    for i in 1..4 {
-        println!("i: {}", i);
-    }
+    let s1 = String::from("hello"); // s1 comes into scope
+    let s2 = s1 + " world"; // s1 is moved to s2, s1 is no longer valid
+    println!("s2: {}", s2); 
 
-    let scores = [90, 85, 78, 92, 88]; // array of scores
-
-    for score in scores {
-        println!("Score: {}", score);
-    }
+    // cloning s2 to create a new String s3
+    let s3 = s2.clone() + "!";
+    println!("s3: {}", s3);
 }
