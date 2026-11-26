@@ -134,27 +134,46 @@
 // }
 
 // Structs in Rust
-struct User {
-    username: String,
-    age: u32,
-    active: bool,
-}
+// struct User {
+//     username: String,
+//     age: u32,
+//     active: bool,
+// }
 // Main function demonstrating the usage of the User struct and its methods
-fn main () {
-    let user1 = User {
-        username: String::from("john_doe"),
-        age: 30,
-        active: true,
-    };
-    // println!("Username: {}, Age: {}, Active: {}", user1.username, user1.age, user1.active); 
-    println!("{}", user1.describe());
-}
+// fn main () {
+//     let user1 = User {
+//         username: String::from("john_doe"),
+//         age: 30,
+//         active: true,
+//     };
+//     // println!("Username: {}, Age: {}, Active: {}", user1.username, user1.age, user1.active); 
+//     println!("{}", user1.describe());
+// }
 
 // Implementation of the User struct methods
-impl User{
-    // Method to describe the user as a string
-    fn describe(&self) -> String {
-        // Using the format! macro to create a descriptive string for the user
-        format!("Username: {}, Age: {}, Active: {}", self.username, self.age, self.active)
+// impl User{
+//     // Method to describe the user as a string
+//     fn describe(&self) -> String {
+//         // Using the format! macro to create a descriptive string for the user
+//         format!("Username: {}, Age: {}, Active: {}", self.username, self.age, self.active)
+//     }
+// }
+
+// Enums 
+enum TrafficLight {
+    Red,
+    Yellow,
+    Green,
+}
+
+fn main() {
+    // Initialize the traffic light to Red
+    let light = TrafficLight::Red;
+
+    // Match on the traffic light and print the corresponding action
+    match light {
+        TrafficLight::Red => println!("Stop!"),
+        TrafficLight::Yellow => println!("Caution!"),
+        TrafficLight::Green => println!("Go!"),
     }
 }
