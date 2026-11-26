@@ -166,9 +166,28 @@ enum TrafficLight {
     Green,
 }
 
+enum Shapes {
+    Circle(f64),
+    Rectangle(f64, f64),
+    Triangle(f64, f64),
+}
+
+fn area(shape: &Shapes) -> f64 {
+    match shape {
+        Shapes::Circle(radius) => 3.14 * radius * radius,
+        Shapes::Rectangle(width, height) => width * height,
+        _ => 0.0 // Default case for any other shapes not handled above
+    }
+}
+
 fn main() {
     // Initialize the traffic light to Red
     let light = TrafficLight::Red;
+
+    // Initialize shapes
+    let c = Shapes::Circle(5.0);
+    let r = Shapes::Rectangle(3.0, 4.0);
+    let t = Shapes::Triangle(3.0, 4.0);
 
     // Match on the traffic light and print the corresponding action
     match light {
@@ -176,4 +195,8 @@ fn main() {
         TrafficLight::Yellow => println!("Caution!"),
         TrafficLight::Green => println!("Go!"),
     }
+    
+    println!("Area of the circle: {}", area(&c));
+    println!("Area of the rectangle: {}", area(&r));
+    println!("Area of the triangle: {}", area(&t));
 }
