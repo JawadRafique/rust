@@ -241,27 +241,49 @@
 // }
 
 // Example of Vector in Rust
-fn main() {
-    let mut scores: Vec<i32> = Vec::new();
+// fn main() {
+//     let mut scores: Vec<i32> = Vec::new();
 
-    scores.push(10);
-    scores.push(20);
-    scores.push(30);
+//     scores.push(10);
+//     scores.push(20);
+//     scores.push(30);
     
-    for score in &scores {
-        println!("Score: {}", score);
+//     for score in &scores {
+//         println!("Score: {}", score);
+//     }
+
+//     println!("First score count: {}", scores[0]);
+    
+//     // Demonstrates ownership and borrowing in Rust
+//     // `owned` is a String that owns its data
+//     // `borrowed` is a string slice that borrows data from a string literal
+//     let owned: String = String::from("Hello, Rust!");
+//     // &str for read-only access to string data
+//     let borrowed: &str = "world";
+
+//     println!("Owned: {}", owned);
+//     println!("Borrowed: {}", borrowed);
+// }
+
+
+// Example of HashMap in Rust
+use std::collections::HashMap; // Import the HashMap collection from the standard library
+
+fn main() {
+    let mut ages: HashMap<String, i32> = HashMap::new();
+    
+    // Insert ages into the HashMap
+    ages.insert(String::from("Alice"), 10);
+    ages.insert(String::from("Bob"), 20);
+    ages.insert(String::from("Charlie"), 30);
+
+    // Check if Alice's age exists in the HashMap 
+    if let Some(age) = ages.get("Alice") {
+        println!("Alice's age: {}", age);
     }
 
-    println!("First score count: {}", scores[0]);
-    
-    // Demonstrates ownership and borrowing in Rust
-    // `owned` is a String that owns its data
-    // `borrowed` is a string slice that borrows data from a string literal
-    let owned: String = String::from("Hello, Rust!");
-    // &str for read-only access to string data
-    let borrowed: &str = "world";
-
-    println!("Owned: {}", owned);
-    println!("Borrowed: {}", borrowed);
+    // Iterate over all entries in the HashMap and print them
+    for (name, age) in &ages {
+        println!("{}: {}", name, age);
+    }
 }
-
