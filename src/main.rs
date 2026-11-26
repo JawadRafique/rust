@@ -160,43 +160,82 @@
 // }
 
 // Enums 
-enum TrafficLight {
-    Red,
-    Yellow,
-    Green,
-}
+// enum TrafficLight {
+//     Red,
+//     Yellow,
+//     Green,
+// }
 
-enum Shapes {
-    Circle(f64),
-    Rectangle(f64, f64),
-    Triangle(f64, f64),
-}
+// enum Shapes {
+//     Circle(f64),
+//     Rectangle(f64, f64),
+//     Triangle(f64, f64),
+// }
 
-fn area(shape: &Shapes) -> f64 {
-    match shape {
-        Shapes::Circle(radius) => 3.14 * radius * radius,
-        Shapes::Rectangle(width, height) => width * height,
-        _ => 0.0 // Default case for any other shapes not handled above
+// fn area(shape: &Shapes) -> f64 {
+//     match shape {
+//         Shapes::Circle(radius) => 3.14 * radius * radius,
+//         Shapes::Rectangle(width, height) => width * height,
+//         _ => 0.0 // Default case for any other shapes not handled above
+//     }
+// }
+
+// fn main() {
+//     // Initialize the traffic light to Red
+//     let light = TrafficLight::Red;
+
+//     // Initialize shapes
+//     let c = Shapes::Circle(5.0);
+//     let r = Shapes::Rectangle(3.0, 4.0);
+//     let t = Shapes::Triangle(3.0, 4.0);
+
+//     // Match on the traffic light and print the corresponding action
+//     match light {
+//         TrafficLight::Red => println!("Stop!"),
+//         TrafficLight::Yellow => println!("Caution!"),
+//         TrafficLight::Green => println!("Go!"),
+//     }
+    
+//     println!("Area of the circle: {}", area(&c));
+//     println!("Area of the rectangle: {}", area(&r));
+//     println!("Area of the triangle: {}", area(&t));
+// }
+
+// Option type in Rust represents an optional value: every Option is either Some and contains a value, or None, and does not.
+// Example usage of Option type
+// fn find_user(id: u32) -> Option<String> {
+//     if id == 1 {
+//         Some(String::from("John Doe"))
+//     } else {
+//         None
+//     }
+// }
+// fn main() {
+//     let results = find_user(1);
+//     match results {
+//         Some(name) => println!("Found user: {}", name),
+//         None => println!("User not found"),
+//     }
+// }
+
+// Result type in Rust represents either success (Ok) or failure (Err).
+// Example usage of Result type
+fn divide(a: f64, b: f64) -> Result<f64, String> { // Returns Ok(result) if division is successful, Err(message) if division by zero 
+    if b == 0.0 {
+        Err(String::from("Cannot divide by zero"))
+    } else {
+        Ok(a / b)
     }
 }
 
 fn main() {
-    // Initialize the traffic light to Red
-    let light = TrafficLight::Red;
+    match divide(10.0, 2.0) {
+        Ok(result) => println!("Result: {}", result),
+        Err(e) => println!("Error: {}", e),
+    } 
 
-    // Initialize shapes
-    let c = Shapes::Circle(5.0);
-    let r = Shapes::Rectangle(3.0, 4.0);
-    let t = Shapes::Triangle(3.0, 4.0);
-
-    // Match on the traffic light and print the corresponding action
-    match light {
-        TrafficLight::Red => println!("Stop!"),
-        TrafficLight::Yellow => println!("Caution!"),
-        TrafficLight::Green => println!("Go!"),
+    match divide(10.0, 0.0) {
+        Ok(result) => println!("Result: {}", result),
+        Err(e) => println!("Error: {}", e),
     }
-    
-    println!("Area of the circle: {}", area(&c));
-    println!("Area of the rectangle: {}", area(&r));
-    println!("Area of the triangle: {}", area(&t));
 }
