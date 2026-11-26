@@ -240,8 +240,7 @@
 //     }
 // }
 
-use core::borrow;
-
+// Example of Vector in Rust
 fn main() {
     let mut scores: Vec<i32> = Vec::new();
 
@@ -265,3 +264,4 @@ fn main() {
     println!("Owned: {}", owned);
     println!("Borrowed: {}", borrowed);
 }
+
