@@ -88,52 +88,58 @@
 
 // Smart Pointers Box, RC, RefCell
 // Import common library for smart pointers
-use std::{cell::RefCell, rc::Rc};
+// use std::{cell::RefCell, rc::Rc};
 
-// Define a simple linked list using Box smart pointer for heap allocation
-enum List {
-    Cons(i32, Box<List>),
-    Nil,
-}
+// // Define a simple linked list using Box smart pointer for heap allocation
+// enum List {
+//     Cons(i32, Box<List>),
+//     Nil,
+// }
+
+// fn main() {
+//     let list = List::Cons(
+//         1,
+//         Box::new(List::Cons(2, Box::new(List::Cons(3, Box::new(List::Nil))))),
+//     );
+
+//     let mut current = &list;
+
+//     loop {
+//         match current {
+//             List::Cons(value, next) => {
+//                 println!("list value {}", value);
+//                 current = next;
+//             }
+//             List::Nil => break,
+//         }
+//     }
+
+//     // Shared ownership with Rc example
+//     let name = Rc::new(String::from("config master"));
+//     let name2 = Rc::clone(&name);
+
+//     println!(
+//         "number of references name variable have: {}",
+//         Rc::strong_count(&name)
+//     );
+
+//     println!("name2 : {}", name2);
+
+//     // Interior mutability with RefCell example
+//     let count = RefCell::new(0);
+//     *count.borrow_mut() += 1;
+
+//     println!("count value {}", count.borrow());
+
+//     // Shared ownership with Rc and interior mutability with RefCell
+//     let shared = Rc::new(RefCell::new(Vec::<String>::new()));
+//     shared.borrow_mut().push("item".to_string());
+
+//     println!("{:?}", shared.borrow())
+// }
+
+// Advance Traits
 
 fn main() {
-    let list = List::Cons(
-        1,
-        Box::new(List::Cons(2, Box::new(List::Cons(3, Box::new(List::Nil))))),
-    );
-
-    let mut current = &list;
-
-    loop {
-        match current {
-            List::Cons(value, next) => {
-                println!("list value {}", value);
-                current = next;
-            }
-            List::Nil => break,
-        }
-    }
-
-    // Shared ownership with Rc example
-    let name = Rc::new(String::from("config master"));
-    let name2 = Rc::clone(&name);
-
-    println!(
-        "number of references name variable have: {}",
-        Rc::strong_count(&name)
-    );
-
-    println!("name2 : {}", name2);
-
-    // Interior mutability with RefCell example
-    let count = RefCell::new(0);
-    *count.borrow_mut() += 1;
-
-    println!("count value {}", count.borrow());
-
-    // Shared ownership with Rc and interior mutability with RefCell
-    let shared = Rc::new(RefCell::new(Vec::<String>::new()));
-    shared.borrow_mut().push("item".to_string());
-
-    println!("{:?}", shared.borrow())
+    println!("Advanced traits example");
 }
